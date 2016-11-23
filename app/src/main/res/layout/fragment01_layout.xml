@@ -11,18 +11,18 @@
         android:background="@color/lightseagreen"
         >
         <Spinner
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:id="@+id/id_shouye_sp"
-            android:background="@color/white"
             android:layout_margin="7dp"
             />
         <EditText
             android:layout_margin="7dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
+            android:layout_weight="1"
+            android:hint="输入目的地"
+            android:id="@+id/id_shouye_ed"
             android:drawableLeft="@drawable/search"
             android:paddingLeft="7dp"
             android:background="@drawable/shape"
@@ -31,6 +31,7 @@
             android:layout_marginRight="7dp"
             android:layout_width="35dp"
             android:layout_height="35dp"
+            android:id="@+id/id_shouye_im"
             android:layout_gravity="center"
             android:src="@drawable/tishi"
             />
@@ -97,6 +98,7 @@
         android:id="@+id/id_shouye_rv01"
         android:scrollbars="vertical"
         android:paddingTop="10dp"
+        android:padding="10dp"
         />
 
 </LinearLayout>

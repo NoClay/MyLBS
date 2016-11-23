@@ -1,11 +1,14 @@
 package andfans.com.mylbs.util;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +23,12 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
     private List<Map<String,Object>> datas = new ArrayList<>();
     private OnItemClickListener onItemClickListener = null;
     private int layout;
+    private Context context;
 
-    public RecycleAdapter(List<Map<String, Object>> datas, int layout) {
+    public RecycleAdapter(Context context,List<Map<String, Object>> datas, int layout) {
         this.datas = datas;
         this.layout = layout;
+        this.context = context;
     }
 
     public interface OnItemClickListener{
@@ -44,8 +49,9 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.tv.setText(datas.get(position).get("text").toString());
-        holder.im.setImageResource((Integer) datas.get(position).get("id"));
+        Glide.with(context).load(datas.get(position).get("id")).override(800,800).centerCrop().into(holder.im);
         holder.itemView.setTag(datas.get(position));
+        //holder.im.setImageURI("http://pic.anhuinews.com/0/03/16/30/3163049_744230.jpg");
         if(onItemClickListener != null){
             holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(v,holder.getLayoutPosition()));
         }

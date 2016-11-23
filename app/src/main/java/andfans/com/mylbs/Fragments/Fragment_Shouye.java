@@ -10,6 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,12 +32,17 @@ import rx.schedulers.Schedulers;
 /*
  * Created by 兆鹏 on 2016/11/23.
  */
-public class Fragment_Shouye extends Fragment {
+public class Fragment_Shouye extends Fragment implements View.OnClickListener{
     private Context context;
     private RecyclerView recyclerView01;
     private RecycleAdapter adapter01;
     private List<Map<String,Object>> datas01;
+    String [] datas = {"西安","北京","上海","广州"};
+    private ArrayAdapter<String> adapter;//spinner的适配器
     private MyImageButton bt1,bt2,bt3,bt4;
+    private Spinner sp;
+    private EditText ed;
+    private ImageView im;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,11 +53,35 @@ public class Fragment_Shouye extends Fragment {
     }
 
     private void findView(View v) {
+        sp = (Spinner) v.findViewById(R.id.id_shouye_sp);
+        im = (ImageView) v.findViewById(R.id.id_shouye_im);
+        ed = (EditText) v.findViewById(R.id.id_shouye_ed);
         recyclerView01 = (RecyclerView) v.findViewById(R.id.id_shouye_rv01);
         bt1 = (MyImageButton) v.findViewById(R.id.id_shouye_imbt01);
         bt2 = (MyImageButton) v.findViewById(R.id.id_shouye_imbt02);
         bt3 = (MyImageButton) v.findViewById(R.id.id_shouye_imbt03);
         bt4 = (MyImageButton) v.findViewById(R.id.id_shouye_imbt04);
+        im.setOnClickListener(this);
+        ed.setOnClickListener(this);
+        bt1.setOnClickListener(this);
+        bt2.setOnClickListener(this);
+        bt3.setOnClickListener(this);
+        bt4.setOnClickListener(this);
+        adapter = new ArrayAdapter<String>(context,android.R.layout.simple_spinner_item, datas);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp.setAdapter(adapter);
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Snackbar.make(view,"点击了"+datas[i],Snackbar.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         bt1.setText("出租车位");
         bt1.setTextColors(R.color.black);
         bt1.setTextSize(15);
@@ -74,9 +108,12 @@ public class Fragment_Shouye extends Fragment {
         Observable.create((Observable.OnSubscribe<List<Map<String, Object>>>) subscriber -> {
             try {
                 datas01 = new ArrayList<>();
-                String[] text = {"出租车位","附近美食","附近酒店","附近加油站"};
-                int [] id = {
-                        R.drawable.rent,R.drawable.goodfood,R.drawable.jiudian,R.drawable.addgas
+                String[] text = {"帝都广场停车场"+"\n"+"收费标准:20￥/小时"+"\n"+"闲时时间:2:00-6:00","万达广场停车场"+"\n"+"收费标准:20￥/小时"+"\n"+"闲时时间:16:00-20:00","华润广场停车场"+"\n"+"收费标准:20￥/小时"+"\n"+"闲时时间:13:00-15:00","中南海广场停车场"+"\n"+"收费标准:20￥/小时"+"\n"+"闲时时间:8:00-12:00"};
+                String [] id = {
+                       "http://pic.anhuinews.com/0/03/16/30/3163049_744230.jpg",
+                        "http://zc.114chn.com/tradepic/440183/4401831005310001/fckupload/201105261528065781.jpg",
+                        "http://ht.topbiz360.com/web/upimg/upload/20140606/14020237686964.jpeg",
+                        "http://www.weblz.com.cn/upload/images/2016/4/19172416935.jpg"
                 };
                 for(int i = 0;i < text.length;i++){
                     Map<String,Object> data = new HashMap<>();
@@ -104,7 +141,7 @@ public class Fragment_Shouye extends Fragment {
 
                     @Override
                     public void onNext(List<Map<String, Object>> maps) {
-                        adapter01 = new RecycleAdapter(maps,R.layout.recycle_item01_layout);
+                        adapter01 = new RecycleAdapter(context,maps,R.layout.recycle_item01_layout);
                         recyclerView01.setAdapter(adapter01);
                         adapter01.setOnItemClickListener((view,position) -> {
                             switch (position){
@@ -125,5 +162,32 @@ public class Fragment_Shouye extends Fragment {
                         });
                     }
                 });
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            //搜索输入框
+            case R.id.id_shouye_ed:
+                Snackbar.make(view,"点击了"+view.getClass(),Snackbar.LENGTH_SHORT).show();
+                break;
+            //消息提示
+            case R.id.id_shouye_im:
+                Snackbar.make(view,"点击了"+view.getClass(),Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.id_shouye_imbt01:
+                Snackbar.make(view,"点击了"+view.getClass(),Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.id_shouye_imbt02:
+                Snackbar.make(view,"点击了"+view.getClass(),Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.id_shouye_imbt03:
+                Snackbar.make(view,"点击了"+view.getClass(),Snackbar.LENGTH_SHORT).show();
+                break;
+            case R.id.id_shouye_imbt04:
+                Snackbar.make(view,"点击了"+view.getClass(),Snackbar.LENGTH_SHORT).show();
+                break;
+
+        }
     }
 }
