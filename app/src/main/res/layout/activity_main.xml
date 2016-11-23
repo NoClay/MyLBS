@@ -6,35 +6,49 @@
     android:orientation="vertical"
     tools:context="andfans.com.mylbs.MainActivity"
     >
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/id_main_vp"
+        />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
-        android:background="@color/lightseagreen"
+        android:background="@color/dimgray"
         >
-        <Spinner
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:id="@+id/id_main_sp"
-            android:background="@color/white"
-            android:layout_margin="7dp"
+            android:gravity="center"
+            android:text="首页"
+            android:textSize="25sp"
+            android:id="@+id/id_main_tab01"
+            android:textColor="@color/white"
             />
-        <EditText
-            android:layout_margin="7dp"
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:drawableLeft="@drawable/search"
-            android:paddingLeft="7dp"
-            android:background="@drawable/shape"
-            />
-        <ImageView
-            android:layout_marginRight="7dp"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
             android:layout_gravity="center"
-            android:src="@drawable/tishi"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="定位"
+            android:textSize="25sp"
+            android:id="@+id/id_main_tab02"
+            android:textColor="@color/white"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="我的"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:id="@+id/id_main_tab03"
+            android:textColor="@color/white"
             />
     </LinearLayout>
 
