@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,13 +34,14 @@ import rx.schedulers.Schedulers;
  * Created by 兆鹏 on 2016/11/23.
  */
 public class Fragment_Shouye extends Fragment implements View.OnClickListener{
-    private Context context;
+    private static Context context;
     private RecyclerView recyclerView01;
-    private RecycleAdapter adapter01;
+    private RecycleAdapter adapter01 = null;
     private List<Map<String,Object>> datas01;
-    String [] datas = {"西安","北京","上海","广州"};
+    private String [] datas = {"西安","北京","上海","广州"};
     private ArrayAdapter<String> adapter;//spinner的适配器
     private MyImageButton bt1,bt2,bt3,bt4;
+    public static final int MSG = 1;
     private Spinner sp;
     private EditText ed;
     private ImageView im;
@@ -48,6 +50,7 @@ public class Fragment_Shouye extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment01_layout,container,false);
         context = getContext();
+        datas01 = new ArrayList<>();
         findView(v);
         return v;
     }
@@ -67,13 +70,13 @@ public class Fragment_Shouye extends Fragment implements View.OnClickListener{
         bt2.setOnClickListener(this);
         bt3.setOnClickListener(this);
         bt4.setOnClickListener(this);
-        adapter = new ArrayAdapter<String>(context,android.R.layout.simple_spinner_item, datas);
+        adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, datas);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp.setAdapter(adapter);
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Snackbar.make(view,"点击了"+datas[i],Snackbar.LENGTH_SHORT).show();
+                Toast.makeText(context,"点击了"+datas[i],Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -107,7 +110,6 @@ public class Fragment_Shouye extends Fragment implements View.OnClickListener{
     private void getData01() {
         Observable.create((Observable.OnSubscribe<List<Map<String, Object>>>) subscriber -> {
             try {
-                datas01 = new ArrayList<>();
                 String[] text = {"帝都广场停车场"+"\n"+"收费标准:20￥/小时"+"\n"+"闲时时间:2:00-6:00","万达广场停车场"+"\n"+"收费标准:20￥/小时"+"\n"+"闲时时间:16:00-20:00","华润广场停车场"+"\n"+"收费标准:20￥/小时"+"\n"+"闲时时间:13:00-15:00","中南海广场停车场"+"\n"+"收费标准:20￥/小时"+"\n"+"闲时时间:8:00-12:00"};
                 String [] id = {
                        "http://pic.anhuinews.com/0/03/16/30/3163049_744230.jpg",
@@ -143,6 +145,7 @@ public class Fragment_Shouye extends Fragment implements View.OnClickListener{
                     public void onNext(List<Map<String, Object>> maps) {
                         adapter01 = new RecycleAdapter(context,maps,R.layout.recycle_item01_layout);
                         recyclerView01.setAdapter(adapter01);
+                        //adapter01.notifyDataSetChanged();
                         adapter01.setOnItemClickListener((view,position) -> {
                             switch (position){
                                 case 0:
@@ -191,3 +194,4 @@ public class Fragment_Shouye extends Fragment implements View.OnClickListener{
         }
     }
 }
+
