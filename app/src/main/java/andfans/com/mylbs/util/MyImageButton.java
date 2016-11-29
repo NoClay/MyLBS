@@ -17,6 +17,11 @@ public class MyImageButton extends LinearLayout {
     private ImageView myim = null;
     private TextView mytv = null;
     private LinearLayout linearLayout = null;
+
+    public MyImageButton(Context context) {
+        this(context,null);
+    }
+
     public MyImageButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.myimbt,this,true);

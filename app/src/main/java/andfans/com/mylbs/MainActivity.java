@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.baidu.mapapi.SDKInitializer;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +22,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_main);
         initView();
         viewPager.setCurrentItem(0);

@@ -24,6 +24,9 @@ import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
+/*
+需要将数据抽取出来，由构造方传入，需要留下设置点击事件的接口
+ */
 
 public class MyRxViewPager extends FrameLayout {
     //轮播图图片数量
@@ -101,9 +104,29 @@ public class MyRxViewPager extends FrameLayout {
         dotViewsList.add(findViewById(R.id.v_dot3));
         dotViewsList.add(findViewById(R.id.v_dot4));
         dotViewsList.add(findViewById(R.id.v_dot5));
-        for(int imageID : imagesResIds){
+        for(int i = 0;i < imagesResIds.length;i++){
             ImageView view =  new ImageView(context);
-            view.setImageBitmap(readBitMap(context,imageID));
+            final int finalI = i;
+            switch (i){
+                case 0:
+                    view.setOnClickListener(view1 -> Utils.showToast(context,"点击了"+ finalI));
+                    break;
+                case 1:
+                    view.setOnClickListener(view1 -> Utils.showToast(context,"点击了"+ finalI));
+                    break;
+                case 2:
+                    view.setOnClickListener(view1 -> Utils.showToast(context,"点击了"+ finalI));
+                    break;
+                case 3:
+                    view.setOnClickListener(view1 -> Utils.showToast(context,"点击了"+ finalI));
+                    break;
+                case 4:
+                    view.setOnClickListener(view1 -> Utils.showToast(context,"点击了"+ finalI));
+                    break;
+                default:break;
+            }
+
+            view.setImageBitmap(readBitMap(context,imagesResIds[i]));
             view.setScaleType(ImageView.ScaleType.FIT_XY);
             imageViewsList.add(view);
         }

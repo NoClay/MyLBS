@@ -8,6 +8,7 @@
         android:layout_height="160dp"
         android:layout_marginLeft="10dp"
         android:id="@+id/id_recycle_item01_im"
+        android:layout_gravity="center_vertical"
         />
     <TextView
         android:layout_marginLeft="10dp"

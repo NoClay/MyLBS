@@ -19,20 +19,20 @@ import andfans.com.mylbs.R;
 /*
  * Created by 兆鹏 on 2016/11/23.
  */
-public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHolder> {
+public class RecycleAdapter_me extends RecyclerView.Adapter<RecycleAdapter_me.ViewHolder> {
     private List<Map<String,Object>> datas = new ArrayList<>();
     private OnItemClickListener onItemClickListener = null;
     private int layout;
     private Context context;
 
-    public RecycleAdapter(Context context,List<Map<String, Object>> datas, int layout) {
+    public RecycleAdapter_me(Context context, List<Map<String, Object>> datas, int layout) {
         this.datas = datas;
         this.layout = layout;
         this.context = context;
     }
 
     public interface OnItemClickListener{
-        void onItemClick(View view,int position);
+        void onItemClick(View view, int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
@@ -49,8 +49,10 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.tv.setText(datas.get(position).get("text").toString());
+        holder.im_back.setImageResource((Integer) datas.get(position).get("back"));
+        holder.im_pic.setImageResource((Integer) datas.get(position).get("pic"));
         holder.itemView.setTag(datas.get(position));
-        //holder.im.setImageURI("http://pic.anhuinews.com/0/03/16/30/3163049_744230.jpg");
+
         if(onItemClickListener != null){
             holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(v,holder.getLayoutPosition()));
         }
@@ -63,12 +65,14 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
     }
     public static class ViewHolder extends RecyclerView.ViewHolder{
         private TextView tv;
-        private ImageView im;
+        private ImageView im_pic;
+        private ImageView im_back;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            tv = (TextView) itemView.findViewById(R.id.id_recycle_item01_tv);
-            im = (ImageView) itemView.findViewById(R.id.id_recycle_item01_im);
+            tv = (TextView) itemView.findViewById(R.id.id_recycle_item02_tv);
+            im_pic = (ImageView) itemView.findViewById(R.id.id_recycle_item02_pic);
+            im_back = (ImageView) itemView.findViewById(R.id.id_recycle_item02_back);
         }
     }
 }
