@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +41,7 @@ public class MyRxViewPager extends FrameLayout {
     private List<ImageView> imageViewsList;
     //放圆点的View的list
     private List<View> dotViewsList;
+    protected OnItemClickListener mOnItemClickListener;
 
     private ViewPager viewPager;
     //当前轮播页
@@ -61,6 +63,22 @@ public class MyRxViewPager extends FrameLayout {
             startPlay();
         }
 
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener;
+    }
+
+    public View getView(int n){
+        if(n < viewPager.getChildCount() && n >= 0) {
+            return viewPager.getChildAt(n);
+        }else {
+            throw new IndexOutOfBoundsException("输入的数字越界");
+        }
     }
 
     /**

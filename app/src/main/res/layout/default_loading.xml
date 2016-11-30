@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:padding="8dp"
+    android:id="@+id/id_loadMore"
     >
     <ProgressBar
         android:layout_width="32dp"

@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -55,6 +56,7 @@ public class Fragment_Shouye extends Fragment {
     private LoadMoreWrapper mLoadMoreWrapper;
     private Context context;
     private String [] datasSpinner = {"西安","北京","上海","广州"};
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Nullable
     @Override
@@ -67,10 +69,24 @@ public class Fragment_Shouye extends Fragment {
 
     private void findView(View v) {
         datas = new ArrayList<>();
+        swipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.id_swipe);
         Spinner sp = (Spinner) v.findViewById(R.id.id_shouye_sp);
         ImageView im = (ImageView) v.findViewById(R.id.id_shouye_im);
         EditText ed = (EditText) v.findViewById(R.id.id_shouye_ed);
         recyclerView = (RecyclerView) v.findViewById(R.id.id_shouye_rv01);
+        // 设置下拉圆圈上的颜色，蓝色、绿色、橙色、红色
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
+                android.R.color.holo_orange_light, android.R.color.holo_red_light);
+        swipeRefreshLayout.setDistanceToTriggerSync(400);// 设置手指在屏幕下拉多少距离会触发下拉刷新
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            new Handler().postDelayed(() -> {
+                //刷新要执行的操作
+                Utils.showToast(context,"没有新数据");
+                // 停止刷新
+                swipeRefreshLayout.setRefreshing(false);
+            }, 2000); // 5秒后发送消息，停止刷新
+
+        });
         im.setOnClickListener(view -> Utils.showToast(context,"当前没有新消息"));
         ed.setOnClickListener(view -> Utils.showToast(context,"服务器忙"));
         ArrayAdapter<String> adapterSpinner = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, datasSpinner);
@@ -185,15 +201,11 @@ public class Fragment_Shouye extends Fragment {
     private void initLoadMoreWrapper(RecyclerView.Adapter adapter){
         mLoadMoreWrapper = new LoadMoreWrapper(adapter);
         mLoadMoreWrapper.setLoadMoreView(R.layout.default_loading);
-        mLoadMoreWrapper.setOnLoadMoreListener(() -> new Handler().postDelayed(() -> {
-            //进行数据更新的操作
-//                for (int i = 0; i < 10; i++)
-//                {
-//                    mDatas.add("Add:" + i);
-//                }
-            mLoadMoreWrapper.notifyDataSetChanged();
-
-        }, 1000));
+//        mLoadMoreWrapper.setOnLoadMoreListener(() -> new Handler().postDelayed(() -> {
+//
+//            Utils.showToast(context,"没有更多数据");
+//            mLoadMoreWrapper.notifyDataSetChanged();
+//        }, 1000));
     }
     private void initHeaderAndFooter(RecyclerView.Adapter adapter)
     {
