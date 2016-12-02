@@ -34,6 +34,11 @@ public class RegisterActivity extends Activity {
 
     private void findView() {
         imUserPic = (ImageView) findViewById(R.id.id_register_userPic);
+        if(getResources().getDrawable(R.drawable.headpic) == imUserPic.getDrawable())
+            Utils.showToast(context,"相等");
+        else {
+            Utils.showToast(context,"不相等");
+        }
         imBack = (ImageView) findViewById(R.id.id_register_back);
         edConfirmCode = (EditText) findViewById(R.id.id_register_confirmCode);
         edUser = (EditText) findViewById(R.id.id_register_user);

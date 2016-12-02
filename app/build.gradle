@@ -16,6 +16,11 @@ android {
         versionCode 1
         versionName "1.0"
     }
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['libs']
+//        }
+//    }
     buildTypes {
         release {
             minifyEnabled false
@@ -31,17 +36,19 @@ dependencies {
     compile 'com.android.support:support-v4:19.1.0'
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.android.support:recyclerview-v7:25.0.+'
-    compile 'io.reactivex:rxjava:1.2.0'
-    compile 'io.reactivex:rxandroid:1.2.0'
+    //    compile 'io.reactivex:rxjava:1.2.0'
+    //    compile 'io.reactivex:rxandroid:1.2.0'
     //引入snackbar
     compile 'com.android.support:design:22.2.0'
-    //引入百度地图SDK
-    compile files('libs/BaiduLBS_Android.jar')
-    compile files('libs/httpmime-4.1.2.jar')
-    compile files('libs/IndoorscapeAlbumPlugin.jar')
+    compile 'cn.bmob.android:bmob-sdk:3.5.0'
     //bmob-sms ：Bmob单独为短信服务提供的包
     compile 'cn.bmob.android:bmob-sms:1.0.1'
-
     //如果你想应用能够兼容Android6.0，请添加此依赖(org.apache.http.legacy.jar)
     compile 'cn.bmob.android:http-legacy:1.0'
+    compile files('libs/baidumapapi_cloud_v4_1_1.jar')
+    compile files('libs/baidumapapi_base_v4_1_1.jar')
+    compile files('libs/baidumapapi_map_v4_1_1.jar')
+    compile files('libs/baidumapapi_radar_v4_1_1.jar')
+    compile files('libs/baidumapapi_search_v4_1_1.jar')
+    compile files('libs/baidumapapi_util_v4_1_1.jar')
 }

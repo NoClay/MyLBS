@@ -44,10 +44,12 @@ public class LoginActivity extends Activity {
         tvPic.setOnClickListener(view -> {
             intent = new Intent(context, MainActivity.class);
             startActivity(intent);
+            finish();
         });
         imPic.setOnClickListener(view -> {
             intent = new Intent(context, MainActivity.class);
             startActivity(intent);
+            finish();
         });
         btLogin.setOnClickListener(view -> {
             Utils.showToast(context,"点击了登录按钮");
