@@ -25,6 +25,14 @@
             android:gravity="center_vertical"
             />
     </RelativeLayout>
+    <andfans.com.mylbs.util.MyCircleImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/id_register_userPic"
+        android:layout_gravity="center"
+        android:src="@drawable/headpic"
+        android:layout_marginTop="10dp"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -159,6 +167,7 @@
         android:textSize="20sp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/shape_login_button"
         android:id="@+id/id_register_register"
         />
