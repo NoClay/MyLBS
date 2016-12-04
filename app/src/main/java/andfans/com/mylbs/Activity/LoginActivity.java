@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ public class LoginActivity extends Activity {
     private TextView tvRegister,tvForget,tvPic;
     private Context context;
     private ImageView imPic;
+    private CheckBox cbRembePassword;
     private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class LoginActivity extends Activity {
     }
 
     private void findView() {
+        cbRembePassword = (CheckBox) findViewById(R.id.id_login_remeberPassword);
         tvPic = (TextView) findViewById(R.id.id_login_tv);
         imPic = (ImageView) findViewById(R.id.id_login_pic);
         btLogin = (Button) findViewById(R.id.id_login_login);

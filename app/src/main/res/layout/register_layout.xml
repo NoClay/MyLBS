@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/mainLayout"
+    >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -81,31 +83,6 @@
             android:layout_weight="4"
             android:hint="请输入手机号"
             android:id="@+id/id_register_telephone"
-            />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="7dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        >
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:textColor="@color/black"
-            android:gravity="center_vertical|right"
-            android:text="车牌号:"
-            android:textSize="18sp"
-            />
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:hint="请输入车牌号"
-            android:id="@+id/id_register_brand"
             />
     </LinearLayout>
     <LinearLayout

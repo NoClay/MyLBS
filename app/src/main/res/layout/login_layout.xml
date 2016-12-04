@@ -92,27 +92,43 @@
             android:hint="请输入密码"
             />
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="记住密码"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="30dp"
+            android:layout_centerVertical="true"
+            android:textColor="@color/mediumturquoise"
+            android:textSize="20sp"
+            android:id="@+id/id_login_remeberPassword"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:text="忘记密码？"
+            android:id="@+id/id_login_forget"
+            android:textColor="@color/mediumturquoise"
+            android:textSize="20sp"
+            />
+    </RelativeLayout>
     <Button
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:textSize="22sp"
         android:text="登录"
         android:id="@+id/id_login_login"
         android:background="@drawable/shape_login_button"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="15dp"
-        android:layout_marginRight="15dp"
-        android:text="忘记密码？"
-        android:id="@+id/id_login_forget"
-        android:textColor="@color/mediumturquoise"
-        android:textSize="20sp"
         />
 
 </LinearLayout>
