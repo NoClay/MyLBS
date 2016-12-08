@@ -21,7 +21,7 @@
         >
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="04Xybghq7TEx28wCRDILNtvKY4NRX8ss" />
+            android:value="qFo1jgKLwwKA01L1PNisEUPCGxwai1GX" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,8 +29,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.LoginActivity"/>
+        <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.RegisterActivity"/>
+        <activity android:name=".LoginAndSign.LoginActivity"/>
+        <activity android:name=".LoginAndSign.SignActivity"/>
+        <activity android:name=".LoginAndSign.ChangePassWord"/>
     </application>
 
 </manifest>

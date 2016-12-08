@@ -14,6 +14,7 @@ import java.util.List;
 import andfans.com.mylbs.Fragments.Fragment_Locate;
 import andfans.com.mylbs.Fragments.Fragment_Shouye;
 import andfans.com.mylbs.Fragments.Fragment_me;
+import cn.bmob.sms.BmobSMS;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
     private ViewPager viewPager;
@@ -27,6 +28,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         viewPager.setCurrentItem(0);
         setTab(0);
     }
+
 
     private void initView() {
         tab01 = (TextView) findViewById(R.id.id_main_tab01);

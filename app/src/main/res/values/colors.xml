@@ -10,5 +10,6 @@
     <color name="dimgray">#696969</color><!--暗灰色 -->
     <color name="mediumturquoise">#48d1cc</color><!--中绿宝石 -->
     <color name="hintTextColor">#C5C5C5</color>
+    <color name="skyBlue">#03A9F4</color>
 
 </resources>

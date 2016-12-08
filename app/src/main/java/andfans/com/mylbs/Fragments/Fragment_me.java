@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import andfans.com.mylbs.Activity.LoginActivity;
+import andfans.com.mylbs.LoginAndSign.LoginActivity;
 import andfans.com.mylbs.R;
 import andfans.com.mylbs.util.RecycleAdapter_me;
 import rx.Observable;

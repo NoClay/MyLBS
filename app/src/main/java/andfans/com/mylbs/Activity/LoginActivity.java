@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import andfans.com.mylbs.LoginAndSign.ChangePassWord;
+import andfans.com.mylbs.LoginAndSign.SignActivity;
 import andfans.com.mylbs.MainActivity;
 import andfans.com.mylbs.R;
 import andfans.com.mylbs.util.Utils;
@@ -55,11 +57,15 @@ public class LoginActivity extends Activity {
             finish();
         });
         btLogin.setOnClickListener(view -> {
-            Utils.showToast(context,"点击了登录按钮");
+            intent = new Intent(context, andfans.com.mylbs.LoginAndSign.LoginActivity.class);
+            startActivity(intent);
         });
-        tvForget.setOnClickListener(view -> Utils.showToast(context,"点击了忘记密码"));
+        tvForget.setOnClickListener(view -> {
+            intent = new Intent(context, ChangePassWord.class);
+            startActivity(intent);
+        });
         tvRegister.setOnClickListener(view -> {
-            intent = new Intent(context,RegisterActivity.class);
+            intent = new Intent(context,SignActivity.class);
             startActivity(intent);
         });
     }
