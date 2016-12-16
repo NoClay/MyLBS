@@ -5,8 +5,10 @@ import android.os.Environment;
 import android.widget.Toast;
 
 public class Utils {
+
     public static boolean isRegister = false;
     public static boolean isLoading = false;
+    public static boolean isLogined = false;
     //缓存头像使用的目录
     public static final String PATH_ADD = Environment.getExternalStorageDirectory() +
             "/MyLBS/userImage/";

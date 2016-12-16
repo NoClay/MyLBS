@@ -16,10 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         >
-        <ImageView
+        <andfans.com.mylbs.util.MyCircleImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@drawable/headpic"
+            android:src="@drawable/head_image"
             android:id="@+id/id_me_im_user_pic"
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@+id/id_me_tv_login"

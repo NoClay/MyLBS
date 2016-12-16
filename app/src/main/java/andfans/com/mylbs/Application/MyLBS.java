@@ -1,5 +1,6 @@
 package andfans.com.mylbs.Application;
 
+import android.Manifest;
 import android.app.Application;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,6 +10,10 @@ import android.widget.Toast;
 
 import com.baidu.mapapi.SDKInitializer;
 
+import java.io.File;
+
+import andfans.com.mylbs.util.UtilClass;
+import andfans.com.mylbs.util.Utils;
 import cn.bmob.sms.BmobSMS;
 import cn.bmob.v3.Bmob;
 
@@ -25,7 +30,23 @@ public class MyLBS extends Application {
         Bmob.initialize(this,"58d3c7005c6ca0f14436244e2bf0f75c");
         BmobSMS.initialize(this,"58d3c7005c6ca0f14436244e2bf0f75c");
         SDKInitializer.initialize(this);
+        initDirs();
+        checkLogin();
         //registerSDKCheckReceiver();
+    }
+
+    private void checkLogin() {
+        boolean isLogin = getApplicationContext().getSharedPreferences("LoginState",
+                Context.MODE_PRIVATE).getBoolean("loginRememberState", false);
+        Utils.isLogined = isLogin;
+    }
+
+    private void initDirs() {
+        //初始化用户头像存储目录
+        File file = new File(Utils.PATH_ADD);
+        if (!file.exists()){
+            file.mkdirs();
+        }
     }
 
     private void registerSDKCheckReceiver(){

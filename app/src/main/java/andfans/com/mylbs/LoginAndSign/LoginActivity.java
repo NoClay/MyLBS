@@ -130,6 +130,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     Log.d(TAG, "done: path" + path);
                                     File imagePic = new File(path);
                                     if (imagePic.exists() && imagePic.isFile()){
+                                        //本地头像存在
+                                        Log.d(TAG, "done: 本地头像存在");
                                         editLoginState(LoginActivity.this,
                                                 one, path, rememberLoginStateButton.isChecked());
                                         finish();
@@ -148,11 +150,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                 @Override
                                                 public void done(String s, BmobException e) {
                                                     if (e == null){
+                                                        //完成下载
+                                                        Log.d(TAG, "done: 云头像存在，下载成功");
                                                         editLoginState(LoginActivity.this,
                                                                 one,
                                                                 path,
                                                                 rememberLoginStateButton.isChecked());
                                                     }else{
+                                                        //没有完成下载
+                                                        Log.d(TAG, "done: 云头像不存在，下载失败");
                                                         editLoginState(LoginActivity.this,
                                                                 one,
                                                                 null,
@@ -171,6 +177,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                     Log.d(TAG, "onProgress: progress" + integer + " / " + l);
                                                 }
                                             });
+                                        }else{
+                                            //没有头像登陆成功
+                                            Log.d(TAG, "done: 没有云端头像");
+                                            editLoginState(LoginActivity.this,
+                                                    one,
+                                                    null,
+                                                    rememberLoginStateButton.isChecked());
                                         }
                                     }
                                     finish();
@@ -235,6 +248,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (isRemember != null){
             editor.putBoolean("loginRememberState", isRemember);
         }
+        Utils.isLogined = true;//已经登陆
+//        editor.putBoolean("loginStatus", true);
         editor.commit();
     }
 
